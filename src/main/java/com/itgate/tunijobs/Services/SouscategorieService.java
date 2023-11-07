@@ -1,6 +1,7 @@
 package com.itgate.tunijobs.Services;
 
 import com.itgate.tunijobs.models.Categorie;
+import com.itgate.tunijobs.models.Commande;
 import com.itgate.tunijobs.models.Souscategorie;
 import com.itgate.tunijobs.repository.CategorieRepo;
 import com.itgate.tunijobs.repository.SouscategorieRepo;
@@ -45,6 +46,10 @@ public class SouscategorieService {
             throw new RuntimeException("fail");
         }
 
+    }
+
+    public List<Souscategorie> getSousCategoriesByIdCategorie(Long categorieId) {
+        return souscategorieRepo.findByCategorieId(categorieId);
     }
 
 

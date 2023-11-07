@@ -163,4 +163,20 @@ public class ClientControllerr {
     }
 
 
+    @GetMapping("/count")
+    public Long countClientProfiles() {
+        return clientService.countClientProfiles();
+    }
+
+
+    @PostMapping("/{id}/bloquer")
+    public Client bloquerClient(@PathVariable Long id) {
+        return clientService.bloquerClient(id);
+    }
+
+    @PostMapping("/{id}/debloquer")
+    public Client debloquerClient(@PathVariable Long id) {
+        return clientService.debloquerClient(id);
+    }
+
 }

@@ -1,8 +1,10 @@
 package com.itgate.tunijobs.controllers;
 
+import com.itgate.tunijobs.Services.SouscategorieService;
 import com.itgate.tunijobs.models.Categorie;
 import com.itgate.tunijobs.Services.CategorieService;
 import com.itgate.tunijobs.models.Commande;
+import com.itgate.tunijobs.models.Souscategorie;
 import com.itgate.tunijobs.repository.CategorieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,9 @@ public class CategorieController {
     CategorieService categorieService;
     @Autowired
     CategorieRepo categorieRepo;
+
+    @Autowired
+    SouscategorieService souscategorieService;
 
     @GetMapping
     public List<Categorie> getall(){
@@ -36,6 +41,11 @@ public class CategorieController {
     public ResponseEntity deleteCategorie (@PathVariable Long id) {
         return categorieService.deleteCategorieService(id);
 
+    }
+
+    @GetMapping("/{categorieId}/Souscategories")
+    public List<Souscategorie> getSousCategoriesByIdCategorie(@PathVariable Long categorieId) {
+        return souscategorieService.getSousCategoriesByIdCategorie(categorieId);
     }
 
     @PutMapping("/{id}")

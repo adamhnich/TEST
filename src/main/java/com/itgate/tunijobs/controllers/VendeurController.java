@@ -147,5 +147,10 @@ public class VendeurController {
         return ResponseEntity.ok(new MessageResponse("Vendeur registered successfully!, Cheak your email for COMFIRMATION"));
     }
 
+    @GetMapping("/count")
+    public Long countVendeurProfiles() {
+        return vendeurService.countVendeurProfiles();
+    }
+
 
 }

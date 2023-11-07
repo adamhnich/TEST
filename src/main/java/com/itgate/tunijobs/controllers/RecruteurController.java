@@ -135,4 +135,9 @@ public class RecruteurController {
         return ResponseEntity.ok(new MessageResponse("Recruteur registered successfully!, Cheak your email for COMFIRMATION"));
     }
 
+    @GetMapping("/count")
+    public Long countRecruteurProfiles() {
+        return recruteurService.countRecruteurProfiles();
+    }
+
 }

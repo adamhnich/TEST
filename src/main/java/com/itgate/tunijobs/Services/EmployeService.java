@@ -3,6 +3,8 @@ package com.itgate.tunijobs.Services;
 import com.itgate.tunijobs.models.Employe;
 import com.itgate.tunijobs.models.Vendeur;
 import com.itgate.tunijobs.repository.EmployeRepo;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class EmployeService {
 
     @Autowired
     EmployeRepo employeRepo;
+
+    @Autowired
+    private EntityManager entityManager;
 
     public List<Employe> getall() {
         return employeRepo.findAll();
@@ -41,5 +46,13 @@ public class EmployeService {
             throw new RuntimeException("fail");
         }
 
+    }
+
+
+
+    public Long countEmployeProfiles() {
+        String jpql = "SELECT COUNT(e) FROM Employe e";
+        Query query = entityManager.createQuery(jpql);
+        return (Long) query.getSingleResult();
     }
 }

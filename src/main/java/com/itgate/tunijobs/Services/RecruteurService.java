@@ -4,6 +4,8 @@ package com.itgate.tunijobs.Services;
 import com.itgate.tunijobs.models.Recruteur;
 import com.itgate.tunijobs.models.Vendeur;
 import com.itgate.tunijobs.repository.RecruteurRepo;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class RecruteurService {
 
     @Autowired
     RecruteurRepo recruteurRepo;
+
+    @Autowired
+    private EntityManager entityManager;
 
     public List<Recruteur> getall(){
         return recruteurRepo.findAll() ;    }
@@ -42,5 +47,11 @@ public class RecruteurService {
             throw new RuntimeException("fail");
         }
 
+    }
+
+    public Long countRecruteurProfiles() {
+        String jpql = "SELECT COUNT(r) FROM Recruteur r";
+        Query query = entityManager.createQuery(jpql);
+        return (Long) query.getSingleResult();
     }
 }

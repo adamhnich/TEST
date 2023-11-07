@@ -138,4 +138,9 @@ public class EmployeController {
 
         return ResponseEntity.ok(new MessageResponse("Employe registered successfully!, Cheak your email for COMFIRMATION"));
     }
+
+    @GetMapping("/count")
+    public Long countEmployeProfiles() {
+        return employeService.countEmployeProfiles();
+    }
 }
