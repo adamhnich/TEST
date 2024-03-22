@@ -2,6 +2,7 @@ package com.itgate.tunijobs.Services;
 
 import com.itgate.tunijobs.models.*;
 import com.itgate.tunijobs.repository.ProfilRepo;
+import jakarta.persistence.Enumerated;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ public class ProfilService {
 
     @Autowired
     ProfilRepo profilRepo;
+    @Enumerated
+    Popularite popularite;
 
     public List<Profil> getall() {
         return profilRepo.findAll();
@@ -74,6 +77,8 @@ public class ProfilService {
         return null;
 
     }
+
+
 
 
 

@@ -40,4 +40,6 @@ public class ProfilController {
     public Profil updateProfil (@RequestBody Profil p, @PathVariable Long id) {
         return profilService.updateProfilService(p,id);
     }
+
+
 }
